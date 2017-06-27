@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class RegexTestHarness {
 
     public static void main(String[] args){
-        Console console = System.console();
         Scanner sc= new Scanner(System.in);
 
         while (true) {
