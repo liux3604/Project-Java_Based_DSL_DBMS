@@ -1,17 +1,24 @@
+/**
+ * Created by User on 6/28/2017.
+ */
+
 package db;
+import java.util.regex.*;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.util.Map;
 import java.util.regex.*;
 import java.util.HashMap;
-/**
- * Created by User on 6/28/2017.
- */
+import org.junit.Test;
+import org.junit.Assert;
+
+
 public class Table {
     private ArrayList<ArrayList<String>> hiddenList;
     private Map<Integer, String> columNameMap= new HashMap<Integer, String>();
     private int columnNum;
+
 
     public Table(){
         hiddenList = new ArrayList<>();
@@ -32,6 +39,8 @@ public class Table {
             String[] columnNames = delimiter.split(titleLine);
 
             for ( int i=0;i<columnNames.length;i++) {
+
+                //Load in the column names and create list of columns
                 String eachColumn = columnNames[i];
                 Pattern p = Pattern.compile("(?:^|\\s*)([^\\s]+?)(?:\\s+)([^\\s]+?)(?:\\s*|$)"); //("\\s*(\\w+[^\\s])\\s*(\\w[^\\s])\\s*")
                 Matcher m = p.matcher(eachColumn);
@@ -43,7 +52,7 @@ public class Table {
                 columnNum++;
             }
 
-            // ============================== stopped here
+            // fill in the table with cell values
             String line;
             while ((line = in.readLine()) != null) {
                 Pattern p2 = Pattern.compile("(?:^|\\s)'([^']*?)'(?:\\s|$)"); // https://regex101.com/r/hG5eE1/1
@@ -60,6 +69,20 @@ public class Table {
         }catch(Exception FileNotFoundException){
             System.out.println("The requested file "+tableFileName+".tbl doesn't exist xixi");
         }
+    }
+
+
+    public void printTable(){
+        System.out.println("reached here");
+
+        System.out.println("num of columns is: " + columnNum);
+
+    }
+
+    public static void main(String[] args){
+        Table newTable = new Table("teams");
+        System.out.println(newTable.columnNum);
+        newTable.printTable();
     }
 
 

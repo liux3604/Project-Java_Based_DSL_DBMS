@@ -2,6 +2,8 @@ package db;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -11,6 +13,7 @@ public class Database {
     //The hidden object i am assigning to is an array list of array list with the type String.
     private ArrayList<Table> hiddenTableList;
     private int tableCount;
+    private Map<Integer, String> dataBaseMap;
 
     final String REST  = "\\s*(.*)\\s*",
             COMMA = "\\s*,\\s*",
@@ -41,6 +44,7 @@ public class Database {
         // YOUR CODE HERE
         hiddenTableList = new ArrayList();
         tableCount=0;
+        dataBaseMap = new HashMap<Integer, String>();
     }
 
     public String transact(String query) {
@@ -75,17 +79,59 @@ public class Database {
             }
             in.close();
             hiddenTableList.add(new Table(name));
+            dataBaseMap.put(tableCount,name);
+            tableCount++;
         }catch(Exception FileNotFoundException){
             System.out.println("The requested file "+name+".tbl doesn't exist haha");
         }
 
     }
 
-    private void createTable(String query){}
+    private void printTable(String query){
+        //first test if the table even exits
+        String tableName = query.trim();
+
+        if(dataBaseMap.containsValue(tableName)){
+
+            Table thisTable= new Table();
+            for(Map.Entry m: dataBaseMap.entrySet()){
+                if(m.getValue()==tableName){
+                     thisTable = hiddenTableList.get((int)m.getKey());
+                }
+            }
+            thisTable.printTable();
+
+        }else{
+            System.out.println("I cannot print because the table "+ tableName +" doesn't exist in the database.");
+        }
+    }
+
+    public Table getTable(String tableNameInput){
+        //return the table matching a table name string
+        String tableName = tableNameInput.trim();
+        if(dataBaseMap.containsValue(tableName)){
+
+            Table thisTable= new Table();
+            for(Map.Entry m: dataBaseMap.entrySet()){
+                if(m.getValue()==tableName){
+                    thisTable = hiddenTableList.get((int)m.getKey());
+                }
+            }
+            return thisTable;
+
+        }else{
+            return null;
+        }
+    }
+
+
+    private void createTable(String query){
+
+    }
+
     private void storeTable(String query){}
     private void dropTable(String query){}
     private void insertRow(String query){}
-    private void printTable(String query){}
     private void select(String query){}
 
 
