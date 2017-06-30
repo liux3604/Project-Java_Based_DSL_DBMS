@@ -95,8 +95,11 @@ public class Database {
 
             Table thisTable= new Table();
             for(Map.Entry m: dataBaseMap.entrySet()){
-                if(m.getValue()==tableName){
-                     thisTable = hiddenTableList.get((int)m.getKey());
+                String tempString= (String) m.getValue(); //Must cast the return type to String, i don't know why
+                if( tempString.equals(tableName)){
+                    //Take note, you cannot use == to compare two string in java; == test for reference equality in java
+                    int key_table = (int) m.getKey();
+                    thisTable = hiddenTableList.get(key_table);
                 }
             }
             thisTable.printTable();
@@ -106,8 +109,9 @@ public class Database {
         }
     }
 
-    
+
     public Table getTable(String tableNameInput){
+        /// not fully tested yet
         //return the table matching a table name string
         String tableName = tableNameInput.trim();
         if(dataBaseMap.containsValue(tableName)){

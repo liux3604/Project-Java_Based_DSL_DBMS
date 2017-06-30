@@ -16,21 +16,21 @@ import org.junit.Assert;
 
 public class Table {
     private ArrayList<ArrayList<String>> hiddenList;
-    private Map<Integer, String> columNameMap= new HashMap<Integer, String>();
+    private Map<Integer, String> columNameMap;
     private int columnNum;
 
 
     public Table(){
         hiddenList = new ArrayList<>();
         columnNum=0;
-        columNameMap = new HashMap<>();
+        columNameMap = new HashMap<Integer, String>();
     }
 
     public Table(String tableFileName){
         // Create a table from a tableFileName.tbl
         hiddenList = new ArrayList<>();
         columnNum=0;
-        columNameMap = new HashMap<>();
+        columNameMap = new HashMap<Integer, String>();
 
         try{
             BufferedReader in = new BufferedReader(new FileReader(tableFileName+".tbl"));
@@ -72,7 +72,7 @@ public class Table {
     }
 
 
-    public void printTable(){
+    void printTable(){
         System.out.println("reached here");
 
         System.out.println("num of columns is: " + columnNum);
