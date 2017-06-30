@@ -13,7 +13,7 @@ public class RegexTestHarness {
 
         while (true) {
             System.out.println("Enter your regex: ");
-            Pattern pattern = Pattern.compile(sc.nextLine());
+            Pattern pattern = Pattern.compile(sc.nextLine(),Pattern.CASE_INSENSITIVE);
 
             System.out.println("Enter input string to search: ");
             Matcher matcher = pattern.matcher(sc.nextLine());

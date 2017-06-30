@@ -6,7 +6,7 @@ In this project, I will be building a small version of what is called a relation
 
 There are several commands you'll have to support in your database implementation. They each have specific error conditions but there are some errors that multiple share. When relevant, this includes malformed commands, commands that result in illegal operations within the database and commands involving tables that don't exist (except create table). Any command that errors should result in no change to the database.
 
------------------Create Table-------------------------------------
+-----------------Create db.Table-------------------------------------
 
 There are two variants of the create table command, explained below.
 
@@ -20,7 +20,7 @@ Create a table with the given name. The columns, content and types of columns of
 
 It is an error to create a table with no columns and it is also an error to create a table that already exists.
 
-Create Table should return the empty String on success, or an appropriate error message otherwise.
+Create db.Table should return the empty String on success, or an appropriate error message otherwise.
 
 
 ------------------Load--------------------------------------------
@@ -40,13 +40,13 @@ Write the contents of a database table to the file <table name>.tbl. If the TBL 
 Store should return the empty String on success, or an appropriate error message otherwise.
 
 
------------------Drop Table----------------------------------------
+-----------------Drop db.Table----------------------------------------
 
 drop table <table name>
 
 Delete the table from the database.
 
-Drop Table should return the empty String on success, or an appropriate error message otherwise.
+Drop db.Table should return the empty String on success, or an appropriate error message otherwise.
 
 
 ------------------Insert Into-------------------------------------

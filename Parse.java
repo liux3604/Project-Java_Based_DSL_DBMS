@@ -1,3 +1,44 @@
+/*
+load fans
+print fans
+
+select * from fans // equivalent of print fans
+
+select Firstname, Lastname from fans
+
+select Firstname, Lastname from fans where Lastname > 'Lee'
+
+select Firstname from fans where Lastname < 'Lee' // Not included in the language for implementation simplicity
+
+create table laterAlphabetFans as select * from fans where Lastname > 'Lee'
+
+print laterAlphabetFans
+
+load team
+select * from fans, teams // join operation
+
+select * from fans, teams where Sport == 'eSports' // join operation
+
+select Wins - Losses as wml from records
+
+create table wmlrecords as select TeamName, Season, Wins - Losses as wml from records
+
+select TeamName, Season, wml from wmlrecords, teams
+
+select TeamName, Season, wml from wmlreocrds, teams where Sport == 'NFL Football' // Error: no such column with name: Sport
+
+create table footballTeams as select * from teams where Sport == 'NFL Football'
+
+select TeamName, Season, wml from wmlrecords, footballTeams
+
+
+
+*/
+
+
+
+
+
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -38,6 +79,7 @@ public class Parse {
 
         eval(args[0]);
     }
+
 
     private static void eval(String query) {
         Matcher m;
