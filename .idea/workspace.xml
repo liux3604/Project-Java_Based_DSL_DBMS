@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="828f5384-286a-4165-bd48-d9fac537bfb9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Main_test.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Project-Java_Based_DSL_DBMS/db/Database.class" afterPath="$PROJECT_DIR$/out/production/Project-Java_Based_DSL_DBMS/db/Database.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Project-Java_Based_DSL_DBMS/db/Table.class" afterPath="$PROJECT_DIR$/out/production/Project-Java_Based_DSL_DBMS/db/Table.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/Database.java" afterPath="$PROJECT_DIR$/db/Database.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/Table.java" afterPath="$PROJECT_DIR$/db/Table.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,8 +40,8 @@
       <file leaf-file-name="Database.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="106" column="5" lean-forward="true" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+            <state relative-caret-position="477">
+              <caret line="108" column="4" lean-forward="false" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -135,8 +130,8 @@
         <option value="$PROJECT_DIR$/Table.java" />
         <option value="$PROJECT_DIR$/javalib/junit-4.12.jar!/org/junit/Assert.class" />
         <option value="$PROJECT_DIR$/Main_test.java" />
-        <option value="$PROJECT_DIR$/db/Database.java" />
         <option value="$PROJECT_DIR$/db/Table.java" />
+        <option value="$PROJECT_DIR$/db/Database.java" />
       </list>
     </option>
   </component>
@@ -837,8 +832,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="106" column="5" lean-forward="true" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+        <state relative-caret-position="477">
+          <caret line="108" column="4" lean-forward="false" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

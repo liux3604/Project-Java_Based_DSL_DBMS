@@ -106,6 +106,7 @@ public class Database {
         }
     }
 
+    
     public Table getTable(String tableNameInput){
         //return the table matching a table name string
         String tableName = tableNameInput.trim();
