@@ -59,12 +59,12 @@ public class Table {
             String line;
             while ((line = in.readLine()) != null) {
                 rowNum++;
-                Pattern p2 = Pattern.compile("(?:^|\\s)'([^']*?)'(?:\\s|$)"); // https://regex101.com/r/hG5eE1/1
+                Pattern p2 = Pattern.compile("'([^,]+)'"); // https://regex101.com/r/hG5eE1/1
                 Matcher m2 = p2.matcher(line);
 
                 int count=0;
                 while (m2.find()) { //where bug is
-                    hiddenColumnList.get(count).add(m2.group(count+1));
+                    hiddenColumnList.get(count).add(m2.group(0));
                     count++;
                 }
 
