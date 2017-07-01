@@ -15,22 +15,25 @@ import org.junit.Assert;
 
 
 public class Table {
-    private ArrayList<ArrayList<String>> hiddenList;
+    private ArrayList<ArrayList<String>> hiddenColumnList;
     private Map<Integer, String> columNameMap;
     private int columnNum;
+    private int rowNum;
 
 
     public Table(){
-        hiddenList = new ArrayList<>();
+        hiddenColumnList = new ArrayList<>();
         columnNum=0;
         columNameMap = new HashMap<Integer, String>();
+        rowNum=0;
     }
 
     public Table(String tableFileName){
         // Create a table from a tableFileName.tbl
-        hiddenList = new ArrayList<>();
+        hiddenColumnList = new ArrayList<>();
         columnNum=0;
         columNameMap = new HashMap<Integer, String>();
+        rowNum=0;
 
         try{
             BufferedReader in = new BufferedReader(new FileReader(tableFileName+".tbl"));
@@ -48,19 +51,20 @@ public class Table {
                 String columnName = m.group(1);
                 String columnType= m.group(2);
                 columNameMap.put(i,columnName);
-                hiddenList.add(new ArrayList<String>());
+                hiddenColumnList.add(new ArrayList<String>());
                 columnNum++;
             }
 
             // fill in the table with cell values
             String line;
             while ((line = in.readLine()) != null) {
+                rowNum++;
                 Pattern p2 = Pattern.compile("(?:^|\\s)'([^']*?)'(?:\\s|$)"); // https://regex101.com/r/hG5eE1/1
                 Matcher m2 = p2.matcher(line);
 
                 int count=0;
-                while (m2.find()) {
-                    hiddenList.get(count).add(m2.group(count+1));
+                while (m2.find()) { //where bug is
+                    hiddenColumnList.get(count).add(m2.group(count+1));
                     count++;
                 }
 
@@ -75,14 +79,40 @@ public class Table {
     void printTable(){
         System.out.println("reached here");
 
+        //Print the title of the table first
         System.out.println("num of columns is: " + columnNum);
+        for(int i=0;i<columnNum;i++){
+            System.out.print("'"+columNameMap.get(i)+"'");
+            if(i<=columnNum-2){
+                System.out.print(",");
+            }
+        }
+        System.out.println();
 
+        //print out all the cell values in the table
+        for(int j=0;j<rowNum;j++){
+            for(int k=0;k<columnNum;k++){
+                System.out.print("'"+hiddenColumnList.get(k).get(j)+"'");
+                if(k<=columnNum-2){
+                    System.out.print(",");
+                }else{
+                    System.out.println();
+                }
+            }
+        }
+
+
+    }
+
+    public String getCellValue(int row, int column){
+        // return the cell value in the specified row and column position in the table
+        return hiddenColumnList.get(column).get(row);
     }
 
     public static void main(String[] args){
         Table newTable = new Table("teams");
         System.out.println(newTable.columnNum);
-        newTable.printTable();
+        System.out.println(newTable.getCellValue(0,0));
     }
 
 
