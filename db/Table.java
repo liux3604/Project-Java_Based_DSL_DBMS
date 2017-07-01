@@ -60,7 +60,7 @@ public class Table {
             while ((line = in.readLine()) != null) {
                 rowNum++;
                 //Pattern p2 = Pattern.compile("'([^,]+)'"); This regex cannot handle int and NOVALUE cell values
-                Pattern p2 = Pattern.compile("'([^,]+)'|([0-9]+)|(NOVALUE)");
+                Pattern p2 = Pattern.compile("'([^,]+)'|([0-9]+)|(NOVALUE)"); //This regular expression can handle NOVALUE and int cell values as well
 
                 // https://regex101.com/r/hG5eE1/1
                 //
@@ -81,10 +81,10 @@ public class Table {
 
 
     void printTable(){
-        System.out.println("reached here");
+        //System.out.println("reached here");
 
         //Print the title of the table first
-        System.out.println("num of columns is: " + columnNum);
+        //System.out.println("num of columns is: " + columnNum);
         for(int i=0;i<columnNum;i++){
             System.out.print("'"+columNameMap.get(i)+"'");
             if(i<=columnNum-2){
@@ -115,8 +115,7 @@ public class Table {
 
     public static void main(String[] args){
         Table newTable = new Table("teams");
-        System.out.println(newTable.columnNum);
-        System.out.println(newTable.getCellValue(0,0));
+        newTable.printTable();
     }
 
 
