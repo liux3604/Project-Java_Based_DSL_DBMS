@@ -59,11 +59,15 @@ public class Table {
             String line;
             while ((line = in.readLine()) != null) {
                 rowNum++;
-                Pattern p2 = Pattern.compile("'([^,]+)'"); // https://regex101.com/r/hG5eE1/1
+                //Pattern p2 = Pattern.compile("'([^,]+)'"); This regex cannot handle int and NOVALUE cell values
+                Pattern p2 = Pattern.compile("'([^,]+)'|([0-9]+)|(NOVALUE)");
+
+                // https://regex101.com/r/hG5eE1/1
+                //
                 Matcher m2 = p2.matcher(line);
 
                 int count=0;
-                while (m2.find()) { //where bug is
+                while (m2.find()) {
                     hiddenColumnList.get(count).add(m2.group(0));
                     count++;
                 }
