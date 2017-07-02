@@ -1,4 +1,6 @@
 package db;
+import org.junit.Assert;
+import org.junit.Test;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -6,8 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-
-import static javafx.beans.binding.Bindings.select;
 
 public class Database {
     //The hidden object i am assigning to is an array list of array list with the type String.
@@ -72,7 +72,7 @@ public class Database {
     private void loadTable(String name){
         System.out.printf("You are trying to load the table named %s\n", name);
         try{
-            BufferedReader in = new BufferedReader(new FileReader(name+".tbl"));
+            BufferedReader in = new BufferedReader(new FileReader("db/"+name+".tbl"));
             String line;
             while ((line = in.readLine()) != null) {
                 System.out.println(line);
@@ -118,7 +118,7 @@ public class Database {
 
             Table thisTable= new Table();
             for(Map.Entry m: dataBaseMap.entrySet()){
-                if(m.getValue()==tableName){
+                if(m.getValue().equals(tableName)){
                     thisTable = hiddenTableList.get((int)m.getKey());
                 }
             }
@@ -129,12 +129,37 @@ public class Database {
         }
     }
 
+    private boolean tableExist(String query){
+        //this method checks whether a specified table exists in the database
+        // this is a helper function
+        // this method has been fully tested
+        String tableName=query.trim();
+        return dataBaseMap.containsValue(tableName);
+    }
+
+    @Test
+    public void testing(){
+        Database db= new Database();
+        db.loadTable("teams");
+        Assert.assertEquals(false,db.tableExist("haha"));
+    }
+
+
+    private void storeTable(String query){
+        String tableName = query.trim();
+        if(tableExist(tableName)){
+            Table tableTemp=getTable(tableName);
+            tableTemp.storeTable();
+        }else{
+            System.out.println("You are trying to store table, but it doesn't exist in the database " + tableName + ".tbl");
+        }
+
+    }
 
     private void createTable(String query){
 
     }
 
-    private void storeTable(String query){}
     private void dropTable(String query){}
     private void insertRow(String query){}
     private void select(String query){}

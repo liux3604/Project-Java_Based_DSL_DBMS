@@ -3,13 +3,15 @@
  */
 
 package db;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.regex.*;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.util.Map;
-import java.util.regex.*;
 import java.util.HashMap;
+import java.io.File;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -19,13 +21,14 @@ public class Table {
     private Map<Integer, String> columNameMap;
     private int columnNum;
     private int rowNum;
-
+    private String tableName;
 
     public Table(){
         hiddenColumnList = new ArrayList<>();
         columnNum=0;
         columNameMap = new HashMap<Integer, String>();
         rowNum=0;
+        tableName = "default";
     }
 
     public Table(String tableFileName){
@@ -34,9 +37,11 @@ public class Table {
         columnNum=0;
         columNameMap = new HashMap<Integer, String>();
         rowNum=0;
+        String tempTableName = tableFileName.trim();
+        tableName=tempTableName;
 
         try{
-            BufferedReader in = new BufferedReader(new FileReader(tableFileName+".tbl"));
+            BufferedReader in = new BufferedReader(new FileReader("db/"+tableFileName+".tbl"));
             String titleLine = in.readLine();
             Pattern delimiter = Pattern.compile(",");
             String[] columnNames = delimiter.split(titleLine);
@@ -86,7 +91,7 @@ public class Table {
         //Print the title of the table first
         //System.out.println("num of columns is: " + columnNum);
         for(int i=0;i<columnNum;i++){
-            System.out.print("'"+columNameMap.get(i)+"'");
+            System.out.print(columNameMap.get(i));
             if(i<=columnNum-2){
                 System.out.print(",");
             }
@@ -96,7 +101,7 @@ public class Table {
         //print out all the cell values in the table
         for(int j=0;j<rowNum;j++){
             for(int k=0;k<columnNum;k++){
-                System.out.print("'"+hiddenColumnList.get(k).get(j)+"'");
+                System.out.print(hiddenColumnList.get(k).get(j));
                 if(k<=columnNum-2){
                     System.out.print(",");
                 }else{
@@ -105,17 +110,30 @@ public class Table {
             }
         }
 
+    }
+
+    public void storeTable(){
+        try{
+            FileWriter writer = new FileWriter(new File("storedTable/"+tableName+".tbl")); //bug is 
+
+        }catch(IOException exp){
+            System.out.println("Problem writing to the file "+tableName+".tbl");
+        }
+
 
     }
 
     public String getCellValue(int row, int column){
         // return the cell value in the specified row and column position in the table
+        // helper function, not fully tested yet
         return hiddenColumnList.get(column).get(row);
     }
 
+
+
     public static void main(String[] args){
-        Table newTable = new Table("teams");
-        newTable.printTable();
+        Table newTable = new Table();
+        newTable.storeTable();
     }
 
 
