@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.junit.Assert;
 
 
+
 public class Table {
     private ArrayList<ArrayList<String>> hiddenColumnList;
     private Map<Integer, String> columNameMap;
@@ -114,7 +115,7 @@ public class Table {
 
     public void storeTable(){
         try{
-            FileWriter writer = new FileWriter(new File("storedTable/"+tableName+".tbl")); //bug is 
+            FileWriter writer = new FileWriter(new File("storedTable/"+tableName+".tbl")); //bug is
 
         }catch(IOException exp){
             System.out.println("Problem writing to the file "+tableName+".tbl");
