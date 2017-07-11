@@ -30,6 +30,7 @@ public class Table {
         columNameMap = new HashMap<Integer, String>();
         rowNum=0;
         tableName = "default";
+        
     }
 
     public Table(String tableFileName){
