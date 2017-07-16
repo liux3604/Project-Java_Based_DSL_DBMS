@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)http://datastructur.es/sp17/materials/proj/proj2/proj2.html#table-of-contents -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Project 2 | CS 61B Spring 2017</title>
+    
+
+    <link href="./Project 2 _ CS 61B Spring 2017_files/common.css" rel="stylesheet" type="text/css">
+    <link href="./Project 2 _ CS 61B Spring 2017_files/lab.css" rel="stylesheet" type="text/css">
+    <link href="./Project 2 _ CS 61B Spring 2017_files/tomorrow.css" rel="stylesheet" type="text/css">
+    <link href="./Project 2 _ CS 61B Spring 2017_files/icon" rel="stylesheet" type="text/css">
+
+    <script src="./Project 2 _ CS 61B Spring 2017_files/jquery.min.js.download" type="text/javascript"></script>
+    <script src="./Project 2 _ CS 61B Spring 2017_files/highlight.pack.js.download" type="text/javascript"></script>
+    <script src="./Project 2 _ CS 61B Spring 2017_files/sidebar.js.download" type="text/javascript"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+    <div id="navbar" class="navbar-top"><div id="navitems">
+        <a href="http://datastructur.es/sp17/index.html"><div class="navitem">Main</div></a>
+        <a href="http://datastructur.es/sp17/about.html"><div class="navitem">Course Info</div></a>
+        <a href="http://datastructur.es/sp17/staff.html"><div class="navitem">Staff</div></a>
+        <a href="http://datastructur.es/sp17/assign.html"><div class="navitem">Assignments</div></a>
+        <a href="http://datastructur.es/sp17/resources.html"><div class="navitem">Resources</div></a>
+        <a href="https://piazza.com/class/iiklg7j9ggf2vl"><div class="navitem">Piazza</div></a>
+    </div></div>
+    <div id="sidebar">
+        <div id="sidebar-content">
+            <h3>Project 2<br>Navigation</h3>
+            <ul>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#table-of-contents">Table of Contents</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#overview">Overview</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#design-process">Design Process</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#commands">Commands</a></li>
+  <ul>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#create-table">Create Table</a></li>
+    <ul>
+      <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#create-table-lt-table-name-gt-lt-column0-name-gt-lt-type0-gt-lt-column1-name-gt-lt-type1-gt"><code>create table &lt;table name&gt; (&lt;column0 name&gt; &lt;type0&gt;, &lt;column1 name&gt; &lt;type1&gt;, ...)</code></a></li>
+      <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#create-table-lt-table-name-gt-as-lt-select-clause-gt"><code>create table &lt;table name&gt; as &lt;select clause&gt;</code></a></li>
+    </ul>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#load">Load</a></li>
+    <ul>
+      <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#load-lt-table-name-gt"><code>load &lt;table name&gt;</code></a></li>
+    </ul>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#store">Store</a></li>
+    <ul>
+      <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#store-lt-table-name-gt"><code>store &lt;table name&gt;</code></a></li>
+    </ul>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#drop-table">Drop Table</a></li>
+    <ul>
+      <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#drop-table-lt-table-name-gt"><code>drop table &lt;table name&gt;</code></a></li>
+    </ul>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#insert-into">Insert Into</a></li>
+    <ul>
+      <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#insert-into-lt-table-name-gt-values-lt-literal0-gt-lt-literal1-gt"><code>insert into &lt;table name&gt; values &lt;literal0&gt;,&lt;literal1&gt;,...</code></a></li>
+    </ul>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#print">Print</a></li>
+    <ul>
+      <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#print-lt-table-name-gt"><code>print &lt;table name&gt;</code></a></li>
+    </ul>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#select">Select</a></li>
+    <ul>
+      <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#select-lt-column-expr0-gt-lt-column-expr1-gt-from-lt-table0-gt-lt-table1-gt-where-lt-cond0-gt-and-lt-cond1-gt-and"><code>select &lt;column expr0&gt;,&lt;column expr1&gt;,... from &lt;table0&gt;,&lt;table1&gt;,... where &lt;cond0&gt; and &lt;cond1&gt; and ...</code></a></li>
+      <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#select-lt-column-expr-gt-from-lt-table0-gt"><code>select &lt;column expr&gt; from &lt;table0&gt;</code></a></li>
+    </ul>
+  </ul>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#a-note-on-whitespace">A Note on Whitespace</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#definitions">Definitions</a></li>
+  <ul>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#names">Names</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#literals">Literals</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#types">Types</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#column-expressions">Column Expressions</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#operands">Operands</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#arithmetic-operators">Arithmetic Operators</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#conditional-statements">Conditional Statements</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#comparison-operators">Comparison Operators</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#table-string-representation">Table String Representation</a></li>
+  </ul>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#special-values">Special Values</a></li>
+  <ul>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#nan">NaN</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#novalue">NOVALUE</a></li>
+  </ul>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#joins">Joins</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#tbl-files">TBL Files</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#example">Example</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#your-task">Your Task</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#sample-code-for-parsing-and-interactivity">Sample Code for Parsing and Interactivity</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#grading">Grading</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#advice">Advice</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#faq-and-tips">FAQ and Tips</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#acknowledgements">Acknowledgements</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#change-log">Change Log</a></li>
+  <ul>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#feb-16-14-09">Feb 16, 14:09</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#feb-17-00-59">Feb 17, 00:59</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#feb-18-13-00">Feb 18, 13:00</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#feb-20-15-59">Feb 20, 15:59</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#feb-22-22-51">Feb 22, 22:51</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#feb-27-16-50">Feb 27, 16:50</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#mar-1-11-11">Mar 1, 11:11</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#mar-1-22-00">Mar 1, 22:00</a></li>
+    <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#mar-4-18-35">Mar 4, 18:35</a></li>
+  </ul>
+</ul>
+        </div>
+    </div>
+    <div id="content-container" class="content-spacer"><main id="content">
+        <header class="title">Project 2: Database, version 1.0</header>
+<h2 id="table-of-contents">Table of Contents</h2>
+
+
+<ul>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#overview">Overview</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#design-process">Design Process</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#commands">Commands</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#definitions">Definitions</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#special-values">Special Values</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#joins">Joins</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#tbl-files">TBL Files</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#example">Example</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#your-task">Your Task</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#sample-code-for-parsing-and-interactivity">Sample Code</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#grading">Grading</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#advice">Advice</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#faq">FAQ</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#acknowledgements">Acknowledgements</a></li>
+  <li><a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#change-log">Change Log</a></li>
+</ul>
+
+
+<h2 id="overview">Overview</h2>
+
+<p>In this project, you'll be building a small version of what is called a relational database management system (DBMS), as well as a DSL (Domain Specific Language) with which a user can interact with your database. The language you will be implementing is similar to the declarative programming language SQL, which is used in the real world to interact with and query databases, large or small. Below is an example of a small database, with 3 tables, 'fans', 'teams', and 'records'.</p>
+
+<p><strong>fans</strong></p>
+
+
+
+<table>
+  <tbody><tr>
+    <th>Lastname string</th>
+    <th>Firstname string</th>
+    <th>TeamName string</th>
+  </tr>
+  <tr>
+    <td>Lee</td>
+    <td>Maurice</td>
+    <td>Mets</td>
+  </tr>
+  <tr>
+    <td>Lee</td>
+    <td>Maurice</td>
+    <td>Steelers</td>
+  </tr>
+  <tr>
+    <td>Ray</td>
+    <td>Mitas</td>
+    <td>Patriots</td>
+  </tr>
+  <tr>
+    <td>Hwang</td>
+    <td>Alex</td>
+    <td>Cloud9</td>
+  </tr>
+  <tr>
+    <td>Rulison</td>
+    <td>Jared</td>
+    <td>EnVyUs</td>
+  </tr>
+  <tr>
+    <td>Fang</td>
+    <td>Vivian</td>
+    <td>Golden Bears</td>
+  </tr>
+</tbody></table>
+
+
+
+<p><strong>teams</strong></p>
+
+
+
+<table>
+  <tbody><tr>
+    <th>TeamName string</th>
+    <th>City string</th>
+    <th>Sport string</th>
+    <th>YearEstablished int</th>
+    <th>Mascot string</th>
+    <th>Stadium string</th>
+  </tr>
+  <tr>
+    <td>Mets</td>
+    <td>New York</td>
+    <td>MLB Baseball</td>
+    <td>1962</td>
+    <td>Mr. Met</td>
+    <td>Citi Field</td>
+  </tr>
+  <tr>
+    <td>Steelers</td>
+    <td>Pittsburgh</td>
+    <td>NFL Football</td>
+    <td>1933</td>
+    <td>Steely McBeam</td>
+    <td>Heinz Field</td>
+  </tr>
+  <tr>
+    <td>Patriots</td>
+    <td>New England</td>
+    <td>NFL Football</td>
+    <td>1960</td>
+    <td>Pat Patriot</td>
+    <td>Gillette Stadium</td>
+  </tr>
+  <tr>
+    <td>Cloud9</td>
+    <td>Los Angeles</td>
+    <td>eSports</td>
+    <td>2012</td>
+    <td>NOVALUE</td>
+    <td>NOVALUE</td>
+  </tr>
+  <tr>
+    <td>EnVyUs</td>
+    <td>Charlotte</td>
+    <td>eSports</td>
+    <td>2007</td>
+    <td>NOVALUE</td>
+    <td>NOVALUE</td>
+  </tr>
+  <tr>
+    <td>Golden Bears</td>
+    <td>Berkeley</td>
+    <td>NCAA Football</td>
+    <td>1886</td>
+    <td>Oski</td>
+    <td>Memorial Stadium</td>
+  </tr>
+</tbody></table>
+
+
+
+<p><strong>records</strong></p>
+
+
+
+<table>
+  <tbody><tr>
+    <th>TeamName string</th>
+    <th>Season int</th>
+    <th>Wins int</th>
+    <th>Losses int</th>
+    <th>Ties int</th>
+  </tr>
+  <tr>
+    <td>Golden Bears</td>
+    <td>2016</td>
+    <td>5</td>
+    <td>7</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Golden Bears</td>
+    <td>2015</td>
+    <td>8</td>
+    <td>5</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Golden Bears</td>
+    <td>2014</td>
+    <td>5</td>
+    <td>7</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Steelers</td>
+    <td>2015</td>
+    <td>10</td>
+    <td>6</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Steelers</td>
+    <td>2014</td>
+    <td>11</td>
+    <td>5</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Steelers</td>
+    <td>2013</td>
+    <td>8</td>
+    <td>8</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Mets</td>
+    <td>2015</td>
+    <td>90</td>
+    <td>72</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Mets</td>
+    <td>2014</td>
+    <td>79</td>
+    <td>83</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Mets</td>
+    <td>2013</td>
+    <td>74</td>
+    <td>88</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Patriots</td>
+    <td>2015</td>
+    <td>12</td>
+    <td>4</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Patriots</td>
+    <td>2014</td>
+    <td>12</td>
+    <td>4</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Patriots</td>
+    <td>2013</td>
+    <td>12</td>
+    <td>4</td>
+    <td>0</td>
+  </tr>
+</tbody></table>
+
+
+
+
+<h2 id="design-process">Design Process</h2>
+
+<p>Because of the size of this project, before you start coding you'll form groups to think about the high level design of your project. In the labs from Feb 16-17, you'll form groups of 4 and spend the next week working together to create a design for your database implementation. You should use this time to also try some exploratory programming to try out some of your ideas on small, toy examples.</p>
+
+<p>This design time should cumulate into a <em>design document</em>, a short outline of your design, its advantages, disadvantages, etc. The format of your design doc is open ended, as you will not be turning it in for a grade. Instead, you'll be presenting your ideas to your lab the following week (Feb 23-24) for a chance to receive constructive feedback and see others' designs.</p>
+
+<p>After brainstorming your design, presenting it, and getting feedback, your 4 person design group will split into two 2 person independent coding teams (ICTs) in order to actually complete the project. Both ICTs may use the design that they came up with together and discuss said design, but they may <strong>not</strong> do any of the following:</p>
+
+<ul>
+  <li>Share implementation code</li>
+  <li>Look at the other group's code</li>
+  <li>Share test code</li>
+</ul>
+
+<p>These two ICTs will submit separate solutions to the project. However, after the project deadline, the two ICTs will come back together and review the other team's code, providing feedback on their implementation. This feedback can be about their code's composition, simplicity, correctness, consistency and/or efficiency as well as their git history.</p>
+
+<p>This process will be covered in more detail during lab. Design groups of 2 or 3 students are also allowable, though every design must split into two ICTs and no ICT can have more than 2 people.</p>
+
+
+<h2 id="commands">Commands</h2>
+
+<p>There are several commands you'll have to support in your database implementation. They each have specific error conditions but there are some errors that multiple share. When relevant, this includes malformed commands, commands that result in illegal operations within the database and commands involving tables that don't exist (except create table). Any command that errors should result in no change to the database.</p>
+
+
+<h3 id="create-table">Create Table</h3>
+
+<p>There are two variants of the <code>create table</code> command, explained below.</p>
+
+<h5 id="create-table-lt-table-name-gt-lt-column0-name-gt-lt-type0-gt-lt-column1-name-gt-lt-type1-gt"><code>create table &lt;table name&gt; (&lt;column0 name&gt; &lt;type0&gt;, &lt;column1 name&gt; &lt;type1&gt;, ...)</code></h5>
+
+<p>Create a table with the given name. The names and types of the columns of the new table are supplied in a parenthesized list, in order. This defines the column order for this table.</p>
+
+<h5 id="create-table-lt-table-name-gt-as-lt-select-clause-gt"><code>create table &lt;table name&gt; as &lt;select clause&gt;</code></h5>
+
+<p>Create a table with the given name. The columns, content and types of columns of the table are those of the intermediate table created by the result of executing the select clause.</p>
+
+<p>It is an error to create a table with no columns and it is also an error to create a table that already exists.</p>
+
+<p>Create Table should return the empty String on success, or an appropriate error message otherwise.</p>
+
+
+<h3 id="load">Load</h3>
+
+
+<h5 id="load-lt-table-name-gt"><code>load &lt;table name&gt;</code></h5>
+
+<p>Load the table stored in the file <code>&lt;table name&gt;.tbl</code> into memory, giving it the name <code>&lt;table name&gt;</code>. The row order of the table is defined as the order in which the rows are listed in the TBL file. If a table with the same name already exists, it should be replaced. If the relevant table file is an invalid table, it is an error.</p>
+
+<p>Load should return the empty String on success, or an appropriate error message otherwise.</p>
+
+
+<h3 id="store">Store</h3>
+
+
+<h5 id="store-lt-table-name-gt"><code>store &lt;table name&gt;</code></h5>
+
+<p>Write the contents of a database table to the file <code>&lt;table name&gt;.tbl</code>. If the TBL file already exists, it should be overwritten.</p>
+
+<p>Store should return the empty String on success, or an appropriate error message otherwise.</p>
+
+
+<h3 id="drop-table">Drop Table</h3>
+
+
+<h5 id="drop-table-lt-table-name-gt"><code>drop table &lt;table name&gt;</code></h5>
+
+<p>Delete the table from the database.</p>
+
+<p>Drop Table should return the empty String on success, or an appropriate error message otherwise.</p>
+
+
+<h3 id="insert-into">Insert Into</h3>
+
+
+<h5 id="insert-into-lt-table-name-gt-values-lt-literal0-gt-lt-literal1-gt"><code>insert into &lt;table name&gt; values &lt;literal0&gt;,&lt;literal1&gt;,...</code></h5>
+
+<p>Insert the given row (the list of literals) to the named table. The table must already be in the DB and the provided values must match the columns of that table. If a provided value cannot be parsed into the type of the column it is listed in, it is an error. The given row is appended to the table, becoming the last row in its row order.</p>
+
+<p>It is an error to insert a row that does not match the given table.</p>
+
+<p>Insert Into should return the empty String on success, or an appropriate error message otherwise.</p>
+
+
+<h3 id="print">Print</h3>
+
+
+<h5 id="print-lt-table-name-gt"><code>print &lt;table name&gt;</code></h5>
+
+<p>Print should return the String representation of the table, or an appropriate error message otherwise.</p>
+
+
+<h3 id="select">Select</h3>
+
+<p>Select statements are used to extract data from the database in a programmatic fashion. Instead of simply writing to and printing individual tables, select statements allow you to form more complicated requests. They take the form below:</p>
+
+
+<h5 id="select-lt-column-expr0-gt-lt-column-expr1-gt-from-lt-table0-gt-lt-table1-gt-where-lt-cond0-gt-and-lt-cond1-gt-and"><code>select &lt;column expr0&gt;,&lt;column expr1&gt;,... from &lt;table0&gt;,&lt;table1&gt;,... where &lt;cond0&gt; and &lt;cond1&gt; and ...</code></h5>
+
+
+<p>The result of a select statement is a new table that has been formed from the join of the given table(s), filtered by the conditional statement(s), and selected from with the column expression(s). The order in which these operations happen is up to your implementation, as long as the output is correct. The joining of tables is optional, i.e. selecting from a single table is valid. The conditional statements are also optional, so a select could be as simple as:</p>
+
+
+<h5 id="select-lt-column-expr-gt-from-lt-table0-gt"><code>select &lt;column expr&gt; from &lt;table0&gt;</code></h5>
+
+
+<p>The order of the columns in the new table is defined by the order they are listed in the select. In the case that all columns are selected (with the <code>*</code> operator), the order is defined by the column order for the join.</p>
+
+<p>It is an error to write a select statement that involved no columns of the listed tables.</p>
+
+<p>Select should return the String representation of the produced table, or an appropriate error message otherwise.</p>
+
+
+<h2 id="a-note-on-whitespace">A Note on Whitespace</h2>
+
+<p>Arbitrary amounts of whitespace are allowed to exist within a command, as long as they delimit parts of the command. That is, arbitrary whitespace may exist <em>between</em> column names, operators, keywords, etc. As an example, the following queries are all valid and equivalent:</p>
+
+<pre><code class="hljs python">select a,b <span class="hljs-keyword">from</span> table1, table2
+select      a,b <span class="hljs-keyword">from</span> table1, table2
+select a , b <span class="hljs-keyword">from</span> table1    ,table2
+select a,         b    <span class="hljs-keyword">from</span> table1,table2
+         select a   , b <span class="hljs-keyword">from</span> table1,table2</code></pre>
+
+<p>While whitespace should not matter in commands, it does matter in your output. There should be no spaces between fields in your output format. The only spaces should be inside the quotes of string values, and a single space in between a column name and its type.</p>
+
+
+<h2 id="definitions">Definitions</h2>
+
+
+<h3 id="names">Names</h3>
+
+<p>Table and column names are non-empty sequences of characters. They may contain only letters, numbers and underscores, and must start with a letter. In addition, no keywords (words involved in commands) may be used as table names, but you don't have to handle this case.</p>
+
+
+<h3 id="literals">Literals</h3>
+
+<p>A literal is a non-empty sequence of characters, and may not contain newlines, tabs, commas, or quotes of any kind. A string type literal is denoted by surrounding the characters with single quotes, and int and float types are denoted by a non-quoted set of characters.</p>
+
+
+<h3 id="types">Types</h3>
+
+<p>The type of a column is the class of data it can hold. The possible types are <code>string</code>, <code>int</code> and <code>float</code>. They should not be quoted when specified, and are case sensitive (i.e. fLoaT is not a valid type).</p>
+
+<p>String types are defined as a sequence of characters surrounded by single quotes. They may not contain newlines, tabs, commas, or quotes of any kind. You do not have to handle the case where a string contains any of these illegal characters. The string representation of a string is its contents surrounded by single quotes.</p>
+
+<p>Int types are defined as a sequence of the decimal digits 0-9, without any other characters. They are not quoted. The string representation of an int is simply the number written in base 10.</p>
+
+<p>Float types are defined as a sequence of the decimal digits 0-9, with exactly one <code>.</code> character present. The <code>.</code> may be the first character, last character, or anywhere in the middle. You do not have to handle other ways of writing floating point numbers like scientific notation. When printing float types, you should specify them to exactly 3 decimal places. The string representation of a float is simply the number written in base 10 to 3 decimal places.</p>
+
+<p>Both int and float types may optionally start with a <code>-</code> character, denoting that it is negative.</p>
+
+
+<h3 id="column-expressions">Column Expressions</h3>
+
+<p>A column expression is an expression of the form <code>&lt;operand0&gt; &lt;arithmetic operator&gt; &lt;operand1&gt; as &lt;column alias&gt;</code>, or it may just be a single operand. There are a few special cases for column expressions, listed below.</p>
+
+<ul>
+  <li>If a lone <code>*</code> is supplied instead of a list of column expressions, all columns of the result of the join should be selected.</li>
+  <li>If only a single operand is given, it must be a column name. The new column shares its name with the original column.</li>
+  <li>If two operands are given, the left must be a column name while the right could be either a column name or a literal. An alias must always be provided when there are two operands.</li>
+</ul>
+
+<p>If a column is created as the result of a column expression that was not just a column name, the name of the new column is given by the <code>as</code> keyword. You do not have to handle the case where a select statement creates duplicate columns.</p>
+
+<p>Columns that are created in a column expression may not be used in a later column expression in the same select. That is, a select like the following is not allowed:</p>
+
+<p><code>select x + y as a, a * 2 from points</code></p>
+
+<p>You may assume that column expressions will be at most binary. That is, a select like the following will not be tested:</p>
+
+<p><code>select x + y + z from points3D</code></p>
+
+
+<h3 id="operands">Operands</h3>
+
+<p>Valid operands are column names and literals.</p>
+
+
+<h3 id="arithmetic-operators">Arithmetic Operators</h3>
+
+<p>Valid arithmetic operators are <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code> for int and float types. For strings, the only allowed operation is concatenation, which is represented by the <code>+</code> operator.</p>
+
+<p>If one operand is an int, and one is a float, the resulting type is a float.</p>
+
+<p>It is an error to try and perform operations where one operand is a string, and the other is an int or float.</p>
+
+
+<h3 id="conditional-statements">Conditional Statements</h3>
+
+<p>A condition statement is a comparison of rows in the given tables. There are two kinds of conditions: unary and binary. Unary conditions are of the form <code>&lt;column name&gt; &lt;comparison&gt; &lt;literal&gt;</code>, while binary conditions are of the form <code>&lt;column0 name&gt; &lt;comparison&gt; &lt;column1 name&gt;</code>. The difference is that unary conditions involve only one column, while binary conditions involve two columns. You may assume that in a unary condition, the literal is always the right operand.</p>
+
+<p>In order to be included in the resulting table of a select statement, a row must pass all conditional statements listed in the select. For example, if we do <code>select * from t1 where y &gt; 5 and x &gt; 4</code>, we will return only rows that match both of these conditions.</p>
+
+<p>Special note: A conditional statement may only use columns that exist <em>after</em>:</p>
+
+<ol>
+  <li>Joins (if any) have been evaluated, e.g. <code>select * from t1, t2</code></li>
+  <li>Column expressions have been evaluated, e.g. <code>select first + last as whole from t1</code></li>
+</ol>
+
+<p>As an example of a disallowed selection, the select statement below is not allowed and will not be tested:</p>
+
+<p><code>select first + last as whole from names where last &gt; 'Smith'</code></p>
+
+<p>The expected output from the statement above can still be achieved though, with two statements:</p>
+
+<pre><code class="hljs python">create table afterSmith <span class="hljs-keyword">as</span> select * <span class="hljs-keyword">from</span> names where last &gt; <span class="hljs-string">'Smith'</span>
+select first + last <span class="hljs-keyword">as</span> whole <span class="hljs-keyword">from</span> afterSmith</code></pre>
+
+
+<h3 id="comparison-operators">Comparison Operators</h3>
+
+<p>Valid conditional comparators are <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code> and <code>&gt;=</code>. These behave the same way that they do in the Java programming language, allowing for translation to the proper <code>compareTo</code> constructs for Strings.</p>
+
+<p>It is an error to compare strings to either int or float types, but it is valid to compare an int and a float.</p>
+
+
+<h3 id="table-string-representation">Table String Representation</h3>
+
+<p>The String representation of a table is its columns and rows in CSV (comma separated value) format, each on a separate line. The first line of the String should be a comma separated list of the column names and types, in the form <code>name type,name type,...</code>. Successive lines should each be an individual row of the table, with each row listed as a comma separated list of the String representations of its entries. There should be no whitespace between a value and the commas around it. The order in which the rows are printed should be the same as their order in the table, as defined by the row order.</p>
+
+<p>For example, the string representation of the fans table is below:</p>
+
+<pre><code class="hljs java">Lastname string,Firstname string,TeamName string
+<span class="hljs-string">'Lee'</span>,<span class="hljs-string">'Maurice'</span>,<span class="hljs-string">'Mets'</span>
+<span class="hljs-string">'Lee'</span>,<span class="hljs-string">'Maurice'</span>,<span class="hljs-string">'Steelers'</span>
+<span class="hljs-string">'Ray'</span>,<span class="hljs-string">'Mitas'</span>,<span class="hljs-string">'Patriots'</span>
+<span class="hljs-string">'Hwang'</span>,<span class="hljs-string">'Alex'</span>,<span class="hljs-string">'Cloud9'</span>
+<span class="hljs-string">'Rulison'</span>,<span class="hljs-string">'Jared'</span>,<span class="hljs-string">'EnVyUs'</span>
+<span class="hljs-string">'Fang'</span>,<span class="hljs-string">'Vivian'</span>,<span class="hljs-string">'Golden Bears'</span></code></pre>
+
+
+<h2 id="special-values">Special Values</h2>
+
+<p>There are two different kinds of special values you'll have to handle in your implementation. These are NaN and NOVALUE.</p>
+
+
+<h3 id="nan">NaN</h3>
+
+<p>If a column expression results in a divide by zero error, the value in that row should be the string "NaN", unquoted. A NaN value has the same type as the column it exists in.</p>
+
+<p>Any arithmetic operation that has a NaN value as one of its operands should produce a NaN.
+Any comparison operators involving NaN should treat it as being larger than all other values except itself, to which it should be equal.
+NaN may not be given as a literal in a column expression or an insert. You do not have to handle this.</p>
+
+
+<h3 id="novalue">NOVALUE</h3>
+
+<p>The special value NOVALUE is exactly what it sounds like, it represents the absence of a value. The value present in a database row should be the string "NOVALUE", unquoted. A NOVALUE value has the same type as the column it exists in.</p>
+
+<p>Any arithmetic operation that has a NOVALUE as one of its operands should treat it as the <em>zero value</em> for the column type. The zero values for strings, ints and floats are '', 0 and 0.0, respectively. The one exception to this is when <em>both</em> operands to arithmetic are NOVALUE, in this case the result should also be NOVALUE.
+Any comparison operation that has a NOVALUE as one of its operands should evaluate to false.
+NOVALUE may not be given as a literal in a column expression. You do not have to handle this.</p>
+
+
+<h2 id="joins">Joins</h2>
+
+<p>A join is just what it sounds like, it combines two tables. The kind of join you'll be implementing is called a natural inner join. In a natural inner join, the new table's rows are formed by merging pairs of rows from the input tables. Two rows should be merged if and only if <em>all</em> of their shared columns have the same values. In the case that the input tables have no columns in common, the resulting table is what is called the <em>Cartesian Product</em> of the tables. That is, each row of table A is considered to match each row of table B as if they had a column in common.</p>
+
+<p>With these rules, you can imagine that it is possible to concoct a join that results in a table with two columns that have the same name, but different types. Luckily for you, you don't have to handle this case.</p>
+
+<p>It is possible to join multiple tables. For example, to join tables A, B and C, you would join A with B, and then join the result of that with C. This rule can be generalized to as many tables as desired, joining them from left to right.</p>
+
+<p>The column order of a join is defined as follows:</p>
+
+<ul>
+  <li>All shared columns come first, in the relative order they were in the left table of the join (the one listed first in the select clause)</li>
+  <li>The unshared columns from the left table come next, in the same relative order they were before.</li>
+  <li>The unshared columns from the right table come last, in the same relative order they were before.</li>
+</ul>
+
+<p>The row order of a join is a little more subtle. In short, all rows of the left table should remain in the same relative order that they were in before the join. Then, within a match to a row of the left table, all rows of the right table should be in the same relative order. An example might help. Let us suppose that we are joining tables <code>A</code> and <code>B</code>. When joining, it turns out that row <code>a0</code> matches rows <code>b0</code> and <code>b2</code> and row <code>a1</code> matches row <code>b1</code>. The order of the rows in the output should be <code>merge(a0,b0)</code>, <code>merge(a0,b2)</code>, <code>merge(a1,b1)</code>. Note that even though <code>b1</code> comes before <code>b2</code> in the original table <code>B</code>, their order is swapped in the output. This is because <code>A</code> is the left table, and since <code>b2</code> matched with <code>a0</code> (which comes before <code>a1</code>), it shows up first since the row order of the left table takes priority.</p>
+
+<p>Lets look at some examples of joins. Suppose we had the two tables below:</p>
+
+<p><strong>t1</strong></p>
+
+
+
+<table>
+  <tbody><tr>
+    <th>X int</th>
+    <th>Y int</th>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>7</td>
+  </tr>
+</tbody></table>
+
+
+
+<p><strong>t2</strong></p>
+
+
+
+<table>
+  <tbody><tr>
+    <th>X int</th>
+    <th>Z int</th>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>1</td>
+  </tr>
+</tbody></table>
+
+
+
+<p>These two tables have a single column in common: X. Thus when we join them, any rows that match in the X column will be merged together. Any rows that have no matches will be discarded. Now suppose we execute the command <code>create table t3 as select * from t1, t2</code>. This command says to create a new table named <code>t3</code> that is the result of selecting all columns from the join of tables <code>t1</code> and <code>t2</code>. The table <code>t3</code> is show below.</p>
+
+<p><strong>t3</strong></p>
+
+
+
+<table>
+  <tbody><tr>
+    <th>X int</th>
+    <th>Y int</th>
+    <th>Z int</th>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>5</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>3</td>
+    <td>9</td>
+  </tr>
+</tbody></table>
+
+
+
+<p>Notice how the row with <code>X=13</code> from <code>t1</code> and the row with <code>X=10</code> from <code>t2</code> are both missing. This is because they did not match any rows in the other table.</p>
+
+<p>Let's look at an example where two tables had no columns in common. Suppose we added the table below to our database.</p>
+
+<p><strong>t4</strong></p>
+
+
+
+<table>
+  <tbody><tr>
+    <th>A int</th>
+    <th>B int</th>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>8</td>
+  </tr>
+</tbody></table>
+
+
+
+<p>Now lets say we execute the command <code>create table t5 as select * from t3, t4</code>. The resulting table looks like this:</p>
+
+<p><strong>t5</strong></p>
+
+
+
+<table>
+  <tbody><tr>
+    <th>X int</th>
+    <th>Y int</th>
+    <th>Z int</th>
+    <th>A int</th>
+    <th>B int</th>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>5</td>
+    <td>4</td>
+    <td>7</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>5</td>
+    <td>4</td>
+    <td>2</td>
+    <td>8</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>3</td>
+    <td>9</td>
+    <td>7</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>3</td>
+    <td>9</td>
+    <td>2</td>
+    <td>8</td>
+  </tr>
+</tbody></table>
+
+
+
+<p>Since there were no columns in common, the result of the join was the cartesian product of the two tables, with every row in <code>t3</code> being matched to every row in <code>t4</code>.</p>
+
+<p>For more information about joins, you can google around for 'natural inner join' and read up on how SQL natural joins work; ours functions the same way.</p>
+
+
+<h2 id="tbl-files">TBL Files</h2>
+
+<p>The format of .tbl files is exactly the same as the table string representation, described in the <a href="http://datastructur.es/sp17/materials/proj/proj2/proj2.html#definitions">Definitions</a>. For a given table, the TBL file it should be stored in is <code>&lt;name&gt;.tbl</code>, where <code>&lt;name&gt;</code> is the name of the table.</p>
+
+
+<h2 id="example">Example</h2>
+
+<p>Suppose that we have stored the tables given at the start of the spec into appropriately named TBL files. Below is a possible transcript of an interaction with an instance of the database. A line starting with '&gt; ' indicates that what follows is a String passed to the database's transact function, which will be followed by successive lines displaying the String returned by the call to transact. Lines starting with '# ' are comments, and are just for the sake of explaining the transcript.</p>
+
+<pre><code class="hljs python">&gt; load fans
+&gt; load teams
+&gt; load records
+&gt; load badTable
+ERROR: TBL file <span class="hljs-keyword">not</span> found: badTable.tbl
+&gt; <span class="hljs-keyword">print</span> fans
+Lastname string,Firstname string,TeamName string
+<span class="hljs-string">'Lee'</span>,<span class="hljs-string">'Maurice'</span>,<span class="hljs-string">'Mets'</span>
+<span class="hljs-string">'Lee'</span>,<span class="hljs-string">'Maurice'</span>,<span class="hljs-string">'Steelers'</span>
+<span class="hljs-string">'Ray'</span>,<span class="hljs-string">'Mitas'</span>,<span class="hljs-string">'Patriots'</span>
+<span class="hljs-string">'Hwang'</span>,<span class="hljs-string">'Alex'</span>,<span class="hljs-string">'Cloud9'</span>
+<span class="hljs-string">'Rulison'</span>,<span class="hljs-string">'Jared'</span>,<span class="hljs-string">'EnVyUs'</span>
+<span class="hljs-string">'Fang'</span>,<span class="hljs-string">'Vivian'</span>,<span class="hljs-string">'Golden Bears'</span>
+<span class="hljs-comment"># Find all fans who's last name comes after 'Lee', and their favorite teams</span>
+&gt; select Firstname,Lastname,TeamName <span class="hljs-keyword">from</span> fans where Lastname &gt;= <span class="hljs-string">'Lee'</span>
+Firstname string,Lastname string,TeamName string
+<span class="hljs-string">'Maurice'</span>,<span class="hljs-string">'Lee'</span>,<span class="hljs-string">'Mets'</span>
+<span class="hljs-string">'Maurice'</span>,<span class="hljs-string">'Lee'</span>,<span class="hljs-string">'Steelers'</span>
+<span class="hljs-string">'Mitas'</span>,<span class="hljs-string">'Ray'</span>,<span class="hljs-string">'Patriots'</span>
+<span class="hljs-string">'Jared'</span>,<span class="hljs-string">'Rulison'</span>,<span class="hljs-string">'EnVyUs'</span>
+<span class="hljs-comment"># Find all the mascots for teams younger than 75 years</span>
+&gt; select Mascot,YearEstablished <span class="hljs-keyword">from</span> teams where YearEstablished &gt; <span class="hljs-number">1942</span>
+Mascot string,YearEstablished int
+<span class="hljs-string">'Mr. Met'</span>,<span class="hljs-number">1962</span>
+<span class="hljs-string">'Pat Patriot'</span>,<span class="hljs-number">1960</span>
+NOVALUE,<span class="hljs-number">2012</span>
+NOVALUE,<span class="hljs-number">2007</span>
+<span class="hljs-comment"># Find all the seasons in which a sports team did poorly, and the city in which they were based</span>
+&gt; create table seasonRatios <span class="hljs-keyword">as</span> select City,Season,Wins/Losses <span class="hljs-keyword">as</span> Ratio <span class="hljs-keyword">from</span> teams,records
+&gt; <span class="hljs-keyword">print</span> seasonRatios
+City string,Season int,Ratio int
+<span class="hljs-string">'New York'</span>,<span class="hljs-number">2015</span>,<span class="hljs-number">1</span>
+<span class="hljs-string">'New York'</span>,<span class="hljs-number">2014</span>,<span class="hljs-number">0</span>
+<span class="hljs-string">'New York'</span>,<span class="hljs-number">2013</span>,<span class="hljs-number">0</span>
+<span class="hljs-string">'Pittsburgh'</span>,<span class="hljs-number">2015</span>,<span class="hljs-number">1</span>
+<span class="hljs-string">'Pittsburgh'</span>,<span class="hljs-number">2014</span>,<span class="hljs-number">2</span>
+<span class="hljs-string">'Pittsburgh'</span>,<span class="hljs-number">2013</span>,<span class="hljs-number">1</span>
+<span class="hljs-string">'New England'</span>,<span class="hljs-number">2015</span>,<span class="hljs-number">3</span>
+<span class="hljs-string">'New England'</span>,<span class="hljs-number">2014</span>,<span class="hljs-number">3</span>
+<span class="hljs-string">'New England'</span>,<span class="hljs-number">2013</span>,<span class="hljs-number">3</span>
+<span class="hljs-string">'Berkeley'</span>,<span class="hljs-number">2016</span>,<span class="hljs-number">0</span>
+<span class="hljs-string">'Berkeley'</span>,<span class="hljs-number">2015</span>,<span class="hljs-number">1</span>
+<span class="hljs-string">'Berkeley'</span>,<span class="hljs-number">2014</span>,<span class="hljs-number">0</span>
+&gt; select City,Season,Ratio <span class="hljs-keyword">from</span> seasonRatios where Ratio &lt; <span class="hljs-number">1</span>
+City string,Season int,Ratio int
+<span class="hljs-string">'New York'</span>,<span class="hljs-number">2014</span>,<span class="hljs-number">0</span>
+<span class="hljs-string">'New York'</span>,<span class="hljs-number">2013</span>,<span class="hljs-number">0</span>
+<span class="hljs-string">'Berkeley'</span>,<span class="hljs-number">2016</span>,<span class="hljs-number">0</span>
+<span class="hljs-string">'Berkeley'</span>,<span class="hljs-number">2014</span>,<span class="hljs-number">0</span>
+&gt; store seasonRatios
+&gt; store badTable
+ERROR: No such table: badTable</code></pre>
+
+
+<h2 id="your-task">Your Task</h2>
+
+<p>You are responsible for implementing the behavior described in the spec. Your provided skeleton code is as follows:</p>
+
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> db;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Database</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Database</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// YOUR CODE HERE</span>
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">transact</span><span class="hljs-params">(String query)</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"YOUR CODE HERE"</span>;
+    }
+}</code></pre>
+
+<p>You may not change the interface defined by this skeleton code. Your Database class must have a public zero argument constructor and a public transact method as defined above. The transact method takes in a string, to be treated as a query command, and returns a string: the output of executing that command on the database. It is fine to add more methods and fields though. Additionally, you may create as many of your own classes as you would like, but they <em>must</em> be part of the <code>db</code> package.</p>
+
+<p>A note on your database's functionality: it is very important that your implementation of print and load work correctly! We will be using them to test many other functions of your project as it is the simplest way to quickly create a table and see its contents. A solution that has bugs in either of these functions will receive very few points, regardless of the quality of the rest of the implementation.</p>
+
+<p>You must not allow your program to crash as the result of bad input (or incorrect code that causes exceptions). If a query is malformed or attempts to perform an illegal operation (such as add an int and a String), an appropriate error message should be returned to the user. These error messages must take the form <code>ERROR: &lt;relevant message here&gt;</code>. It does not matter exactly what the relevant message is, but for your own debugging purposes, good messages would help.</p>
+
+<p>You may use any classes from the following standard library packages:</p>
+
+<ul>
+  <li><code>java.util</code></li>
+  <li><code>java.util.regex</code></li>
+  <li><code>java.io</code></li>
+  <li><code>java.nio</code></li>
+</ul>
+
+<p>You may also use any packages provided in the skeleton javalib folder, including <code>org.JUnit</code> and <code>jh61b</code>.</p>
+
+<p>If you use any packages outside of these or the provided code, your project will receive zero points.</p>
+
+<p>If you feel you should be able to use a standard library class that is not included in these packages, ask on Piazza. It is unlikely, but possible. You may <strong>NOT</strong> use any third party libraries, e.g. Apache Commons library.</p>
+
+
+<h2 id="sample-code-for-parsing-and-interactivity">Sample Code for Parsing and Interactivity</h2>
+
+<p>When it comes time to build the interface to your database, you'll find that processing user input is a significant challenge. We've provided two classes <code>Main</code> and <code>Parse</code> that you will find helpful for setting up your interface. Particularly strong programmers might consider looking at these classes.</p>
+
+<p><code>Main.java</code> is a simple <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">REPL</a> client for your database. It will create an instance of your database and pass whatever you type at its prompt to the transact function, displaying the return value. This will come in handy for prototyping features and ideas, but we still recommend that you write your own unit tests, since any tests you perform with this class will disappear once you exit it.</p>
+
+<p><code>Parse.java</code> provides examples of how one can process the inputs from the user. This class is capable of parsing the commands your database should accept and displaying a brief summary of the command. Try it out and see what happens, but be aware that it is not industrial strength. It will check the general form of commands to detect malformed queries, but it is still possible to create malformed commands that it accepts. How you handle malformed commands such as these in your own implementation is up to you, but we recommend you do it somewhere other than your parser, as detecting some errors at such a high level is quite complicated. Feel free to take whatever code you would like from this class to parse commands passed to your database's transact command. <strong>You should not be directly calling any methods from Parse in your project, but instead using its logic as a reference.</strong></p>
+
+
+<h2 id="grading">Grading</h2>
+
+
+<p>This project is worth 100 points. However, it is possible to score up to 120 points on the autograder. For every 2 points that you get above the maximum, you'll earn one gold point. Your score in gradescope will be your score. We reserve the right to add autograder tests up until Sunday, March 5th at noon. To ensure that everyone is being scored under the same standards, the autograder will automatically rerun for everyone's code early on the morning of Monday, March 6th (that way nobody gets a score that matches some older version of the autograder).</p>
+
+<p>Your project will be scored ONLY based on calls to the transact method as well as the automated style checker. Except in extreme cases, no partial credit will be awarded for partially functioning code or code that we cannot test without transact. Most tests have the same weight, though the extra challenging tests are worth up to twice the number of points as a normal autograder test.</p>
+
+<p>You can also get up to 3 extra credit points by submitting to the <a href="https://gradescope.com/courses/3642/assignments/22624">extra credit
+autograder</a> before <strong>March
+3, 11:59 p.m.</strong></p>
+
+<p>With rare exceptions, both partners will receive the same score, even if partnerships ended up being somewhat inequitable. Please contact the staff if your partnership went really off the rails.</p>
+
+
+<h2 id="advice">Advice</h2>
+
+<p>This project seems daunting at first, but don't be discouraged! With the right design, much of the code you'll have to write is fairly simple. We encourage you to take advantage of the design process; really put a lot of thought into the abstractions that you'll define and the interactions between them. When doing your design, don't think about the code or what it would look like. Instead, focus on the abstract. Drawing a picture could help; illustrating the object types of your project and their interactions. That being said, don't allow your initial design to be absolute; programmers often encounter difficulties when implementing that weren't anticipated while designing. Allow your design to change and adapt as you program, as it is just a starting point, not the end.</p>
+
+<p>When implementing your project, be wary of any constructs that seem overly complicated. If you find yourself writing complicated, messy, or difficult to reason about code, take a step back and think about the task you're trying to accomplish. Some questions to consider in this situation are:</p>
+
+<ul>
+  <li>Is there a standard library class/function that can do the task or make it simpler?</li>
+  <li>Would a refactoring or redesign of the interface for some other part of the project simplify this?</li>
+  <li>Is what I'm trying to do here even the right thing?</li>
+</ul>
+
+<p>Make sure to read your own code. It's very common for students to write and write and write code without actually reading what they've written. This often leads to both bugs that are hard to track down and the headaches that develop while looking for them. Often, simply reading your own code carefully at conceptual checkpoints can find potential bugs before they become buried. In addition, be sure to occasionally look back on what you've written and see if there is a simpler way to do what you've already done. It may pay off in the future to simplify your code when you can. Try to look back on your design as well, and see if some tweaks to it here and there would improve it. Make sure you have enough abstraction to keep things modular. If you have fewer than 5-6 classes, you might consider thinking about how you can break things up some more. Don't be afraid to split your implementation up into many small classes; the staff solution has 24 different Java files! We highly encourage you to make use of interfaces, especially for functions of your database that have multiple cases (i.e. evaluating column expressions).</p>
+
+<p><strong>Write test cases often.</strong> Just finished a large chunk of code or a class? Write unit tests to verify its behavior is correct before moving on. Realized that your implementation has a bug that wasn't caught by the unit tests? Don't just fix it and forget. Once you narrow down a suspected source of the bug, devise a test case (or multiple, depending on the nature of the bug) that reproduces the bug and fails. Then fix the bug and verify that the test case now passes. <strong>Write tests often!</strong></p>
+
+<p>Do your best to keep a good commit history. Don't just commit after you've worked for <code>x</code> hours or written <code>y</code> lines of code. Instead commit after you've completed a conceptually significant piece of code that stands well on its own, or when you change the way some part of the code functions. If you break up your commits by concept and not quantity, then bugs that are introduced are likely to correspond to a well focused set of changes within one commit. If you use commits just as a way to save progress instead of organizing it, bugs may be spread across multiple commits or buried among a large set of unrelated changes within a single commit.</p>
+
+<p>Get something working as soon as you can. We strongly encourage you to get the internal functionality working first (i.e. joins) before implementing the parsing and execution of commands. After completing an internal feature, write your own unit tests to verify that it works, and don't move on until you do so. Once you have a solid foundation, try to get commands such as <code>create table</code>, <code>print</code> and some basic <code>select</code>s working. In addition, don't try and implement all internal functionality at once. Some examples of starting with the basic functionality:</p>
+
+<ul>
+  <li>Don't try to implement assorted types at first, start by assuming everything is a string.</li>
+  <li>Don't try to implement the joining of many tables at first, start with just the join of two tables.</li>
+  <li>Don't try to implement multiple conditional statements at first, start with just one conditional.</li>
+  <li>Don't try to implement the full select clause definition at first. Start with selecting rows from one table, then move on to more complicated selects.</li>
+</ul>
+
+
+<h2 id="faq-and-tips">FAQ and Tips</h2>
+
+<p>Tips for this project are available via <a href="https://docs.google.com/presentation/d/15vUYoez7XXKJrBtXo4aKm0wGLIVfSzxiTvnPDfuzStU/edit#slide=id.g1ead5df013_0_18">Google slides</a>.</p>
+
+<p>Project 2 getting-started and tips videos available <a href="https://www.youtube.com/watch?v=yEBZhBT-fkc&amp;list=PL8FaHk7qbOD6-PkK0-17uBw6mbXpz9JTJ&amp;index=1">in this playlist</a>.</p>
+
+
+<h2 id="acknowledgements">Acknowledgements</h2>
+
+<p>Thanks to all of the CS 61B staff for helping test this project, and special thanks to Aidan Clark, Eli Lipsitz, Kevin Lowe and Jared Rulison for taking it on when the spec was still in early beta.</p>
+
+
+<h2 id="change-log">Change Log</h2>
+
+
+<h3 id="feb-16-14-09">Feb 16, 14:09</h3>
+
+<p>Clarify that strings with illegal characters do not have to be handled.</p>
+
+
+<h3 id="feb-17-00-59">Feb 17, 00:59</h3>
+
+<p>Clarify that NaN should be equal to itself.</p>
+
+
+<h3 id="feb-18-13-00">Feb 18, 13:00</h3>
+
+<p>Clarify that only <em>columns</em> (not rows) that exist after joins and selects can be used in conditionals.</p>
+
+
+<h3 id="feb-20-15-59">Feb 20, 15:59</h3>
+
+<p>Correct example transcript to select columns used in conditionals.</p>
+
+
+<h3 id="feb-22-22-51">Feb 22, 22:51</h3>
+
+<p>Correct typo in Joins section: Cartesian products occur when tables have no <em>columns</em> (not rows) in common.</p>
+
+
+<h3 id="feb-27-16-50">Feb 27, 16:50</h3>
+
+<p>Clarify that the <code>Parse</code> class should not be directly called in the project
+implementation.</p>
+
+
+<h3 id="mar-1-11-11">Mar 1, 11:11</h3>
+
+<p>Clarify that two <code>NOVALUE</code>s should produce <code>NOVALUE</code> in arithmetic.</p>
+
+
+<h3 id="mar-1-22-00">Mar 1, 22:00</h3>
+
+<p>Fixed scoring discrepancy. This project is 100 points, as stated in about.html.</p>
+
+
+<h3 id="mar-4-18-35">Mar 4, 18:35</h3>
+
+<p>Clarify that ints and floats must support negative numbers, denoted by a leading <code>-</code>.</p>
+    </main></div>
+
+
+</body></html>
