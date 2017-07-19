@@ -24,8 +24,10 @@ public class Table {
     private int rowNum;
     private String tableName;
 
+
+
     public Table(){
-        hiddenColumnList = new ArrayList<>();
+        hiddenColumnList = new ArrayList<ArrayList<String>>();
         columnNum=0;
         columNameMap = new HashMap<Integer, String>();
         rowNum=0;

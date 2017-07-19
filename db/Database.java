@@ -70,6 +70,9 @@ public class Database {
     }
 
     private void loadTable(String name){
+        //Load a table with the input of the table name in the /db folder.
+        //tested
+
         System.out.printf("You are trying to load the table named %s\n", name);
         try{
             BufferedReader in = new BufferedReader(new FileReader("db/"+name+".tbl"));
@@ -88,6 +91,7 @@ public class Database {
     }
 
     private void printTable(String query){
+        //Print should return the String representation of the table, or an appropriate error message otherwise.
         //first test if the table even exits
         String tableName = query.trim();
 
@@ -130,22 +134,19 @@ public class Database {
     }
 
     private boolean tableExist(String query){
-        //this method checks whether a specified table exists in the database
+        //this method checks whether a specified table already exists in the database
         // this is a helper function
         // this method has been fully tested
         String tableName=query.trim();
         return dataBaseMap.containsValue(tableName);
     }
 
-    @Test
-    public void testing(){
-        Database db= new Database();
-        db.loadTable("teams");
-        Assert.assertEquals(false,db.tableExist("haha"));
-    }
 
 
     private void storeTable(String query){
+        //Write the contents of a database table to the file <table name>.tbl in the /db folder. If the TBL file already exists, it should be overwritten.
+        //Store should return the empty String on success, or an appropriate error message otherwise.
+
         String tableName = query.trim();
         if(tableExist(tableName)){
             Table tableTemp=getTable(tableName);
@@ -165,5 +166,11 @@ public class Database {
     private void select(String query){}
 
 
+    @Test
+    public void testing(){
+        Database db= new Database();
+        db.loadTable("teams");
+        Assert.assertEquals(true,db.tableExist("teams"));
+    }
 
 }

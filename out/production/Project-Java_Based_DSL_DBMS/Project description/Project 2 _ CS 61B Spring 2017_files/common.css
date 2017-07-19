@@ -1,0 +1,105 @@
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    padding-top: 40px;
+}
+a {
+    text-decoration: none;
+    color: #2F86EB;
+}
+a:hover {
+    color: #2065C4;
+}
+#coursename {
+	color: #2F86EB;
+	margin: 30px 40px 20px;
+	font-size: 40px;
+	line-height: 45px;
+}
+#courseid {
+	color: #2065C4;
+	font-size: 60px;
+	margin-right: 10px;
+}
+#courseinfo {
+    margin-left: 40px;
+}
+.navbar-top {
+    position: fixed;
+    top: 0;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #2F86EB;
+    line-height: 20px;
+    text-align: center;
+    z-index: 10;
+}
+
+.navbar-top a {
+    color: white;
+}
+.navbar-top a:hover {
+    color: white;
+}
+#navitems {
+    display: inline-block;
+    margin: 0 auto;
+}
+.navitem {
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 15px;
+}
+#toc-button {
+    background-color: Transparent;
+    border: none;
+    float: left;
+    margin-left: 15px;
+    outline: none;
+    margin-bottom: -10px;
+    margin-top: -4px;
+    cursor: pointer;
+}
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+#content {
+    margin: 20px 40px 40px;
+}
+.segment {
+    margin-top: 20px;
+    border-top: 2px solid #2F86EB;
+    padding-top: 20px;
+}
+.segmenttitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.text {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+.code {
+    margin: 0 30px;
+    background-color: #EEE;
+    padding: 5px 15px 10px;
+    border-radius: 2px;
+}
+.codeindent {
+    margin-left: 30px;
+}
+
+/* Code Segments & Font */
+pre {
+    margin: 0;
+    line-height: normal;
+    border: 1px solid #EEE;
+    border-bottom: none;
+}
+code {
+    background-color: #EEE;
+    font-size: 15px;
+    padding: 1px 5px;
+}
